@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+  <head>
+    <title>aon-icons demo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+
+    <link rel="import" href="../aon-icons.html">
+    <link rel="import" href="../aon-documental-icons.html">
+
+    <style is="custom-style" include="demo-pages-shared-styles">
+    </style>
+  </head>
+  <body>
+    <template is="dom-bind">
+     <iron-meta type="iconset" list="{{iconsets}}"></iron-meta>
+
+      <template is="dom-repeat" items="{{iconsets}}">
+        <h2>{{item.name}}</h2>
+
+        <div class="set">
+          <template is="dom-repeat" items="{{getIconNames(item)}}">
+            <span class="container">
+              <iron-icon icon="{{item}}"></iron-icon>
+              <div>{{item}}</div>
+            </span>
+          </template>
+        </div>
+      </template>
+    </template>
+
+    <script>
+      document.querySelector('[is=dom-bind]').getIconNames = function(iconset) {
+        return iconset.getIconNames();
+      };
+    </script>
+  </body>
+</html>
